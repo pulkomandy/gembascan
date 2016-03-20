@@ -1,24 +1,6 @@
 #******************************************************************************
 #
-# Makefile - Rules for building the Quickstart RGB.
-#
-# Copyright (c) 2012 Texas Instruments Incorporated.  All rights reserved.
-# Software License Agreement
-# 
-# Texas Instruments (TI) is supplying this software for use solely and
-# exclusively on TI's microcontroller products. The software is owned by
-# TI and/or its suppliers, and is protected under applicable copyright
-# laws. You may not combine this software with "viral" open-source
-# software in order to form a larger program.
-# 
-# THIS SOFTWARE IS PROVIDED "AS IS" AND WITH ALL FAULTS.
-# NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT
-# NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-# A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. TI SHALL NOT, UNDER ANY
-# CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
-# DAMAGES, FOR ANY REASON WHATSOEVER.
-# 
-# This is part of revision 9453 of the EK-LM4F120XL Firmware Package.
+# Makefile - Rules for building GBS8200 controller.
 #
 #******************************************************************************
 
@@ -35,7 +17,7 @@ VARIANT=cm4f
 #
 # The base directory for StellarisWare.
 #
-ROOT=../../..
+ROOT=stellarisware
 
 #
 # Include the common make definitions.
@@ -45,14 +27,14 @@ include ${ROOT}/makedefs
 #
 # Where to find source files that do not live in this directory.
 #
-VPATH=../drivers
-VPATH+=../../../utils
+VPATH=${ROOT}/drivers
+VPATH+=${ROOT}/utils
 
 #
 # Where to find header files that do not live in the source directory.
 #
 IPATH=..
-IPATH+=../../..
+IPATH+=${ROOT}
 
 #
 # The default rule, which causes the Quickstart RGB to be built.
@@ -75,7 +57,7 @@ ${COMPILER}:
 #
 # Rules for building the Quickstart RGB.
 #
-${COMPILER}/qs-rgb.axf: ${COMPILER}/buttons.o
+#${COMPILER}/qs-rgb.axf: ${COMPILER}/buttons.o
 ${COMPILER}/qs-rgb.axf: ${COMPILER}/cmdline.o
 ${COMPILER}/qs-rgb.axf: ${COMPILER}/qs-rgb.o
 ${COMPILER}/qs-rgb.axf: ${COMPILER}/rgb.o

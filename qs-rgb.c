@@ -25,19 +25,14 @@
 #include <math.h>
 #include "inc/hw_types.h"
 #include "inc/hw_memmap.h"
-#include "inc/hw_hibernate.h"
-#include "driverlib/fpu.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/rom.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
 #include "driverlib/systick.h"
-#include "driverlib/interrupt.h"
-#include "driverlib/hibernate.h"
 #include "utils/uartstdio.h"
 #include "utils/cmdline.h"
 #include "drivers/rgb.h"
-#include "drivers/buttons.h"
 #include "rgb_commands.h"
 #include "qs-rgb.h"
 
@@ -101,62 +96,6 @@ __error__(char *pcFilename, unsigned long ulLine)
 #endif
 
 
-//*****************************************************************************
-//
-// Handler to manage the button press events and state machine transitions
-// that result from those button events.
-//
-// This function is called by the SysTickIntHandler if a button event is 
-// detected. Function will determine which button was pressed and tweak various
-// elements of the global state structure accordingly.
-//
-//*****************************************************************************
-void 
-AppButtonHandler(void)
-{
-    static unsigned long ulTickCounter;
-    
-    ulTickCounter++;
-
-    //
-    // Switch statement to adjust the color wheel position based on buttons
-    //
-    switch(g_sAppState.ulButtons & ALL_BUTTONS)
-    {
-    
-    case LEFT_BUTTON:
-        break;
-
-    case RIGHT_BUTTON:
-        break;
-
-    case ALL_BUTTONS:
-
-        break;
-
-    default:
-        break;
-    }
-}
-
-
-//*****************************************************************************
-//
-// Called by the NVIC as a result of SysTick Timer rollover interrupt flag
-//
-// Checks buttons and calls AppButtonHandler to manage button events.
-// Tracks time and auto mode color stepping.  Calls AppRainbow to implement
-// RGB color changes.
-//
-//*****************************************************************************
-void 
-SysTickIntHandler(void)
-{
-    g_sAppState.ulButtons = ButtonsPoll(0,0);
-    AppButtonHandler();
-}
-
-
 #include <stdint.h>
 #define PROGMEM
 #include "StartArray.h"
@@ -202,23 +141,11 @@ main(void)
     ROM_GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
     UARTStdioInit(0);
 
-    UARTprintf("Welcome to the Stellaris LM4F120 LaunchPad!\n");
+    UARTprintf("----------------------------------\n");
     UARTprintf("Type 'help' for a list of commands\n");
     UARTprintf("> ");
 
-    //
-    // Initialize the buttons
-    //
-    ButtonsInit();
-
-    //
-    // Initialize the SysTick interrupt to process colors and buttons.
-    //
-    SysTickPeriodSet(SysCtlClockGet() / APP_SYSTICKS_PER_SEC);
-    SysTickEnable();
-    SysTickIntEnable();
-    IntMasterEnable();
-
+	// Initialize the I2C
     SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C0);
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
 
