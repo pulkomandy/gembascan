@@ -1,17 +1,17 @@
 
 const uint8_t startArray[] PROGMEM = {
 
-240, 0,
+240, 0,   // Select register bank 0
+68,  0,   // S0_44: put everything in reset state
+69,  0,   // S0_45: likewise
+
+240, 0,   // Do it twice to make sure the chip is in sane initial state
 68,  0,
 69,  0,
 
-240, 0,
-68,  0,
-69,  0,
-
-240, 5,
-0,   216,
-2,   87,
+240, 5,   // Register bank 5
+0,   216, // Configure ADC clocks
+2,   87,  // Configure ADC
 3,   241,
 4,   0,
 5,   0,
@@ -35,7 +35,8 @@ const uint8_t startArray[] PROGMEM = {
 25,  2,
 30,  128,
 31,  4,
-32,  208,
+
+32,  208,  // Configure sync processor
 33,  32,
 34,  15,
 35,  0,
@@ -91,8 +92,8 @@ const uint8_t startArray[] PROGMEM = {
 92,  6,
 99,  15,
 
-240, 0,
-64,  124,
+240, 0,   // Switch to register bank 0
+64,  124, // Configure miscellaneous regusters
 65,  69,
 67,  0,
 68,  1,
@@ -114,8 +115,8 @@ const uint8_t startArray[] PROGMEM = {
 88,  0,
 89,  0,
 
-240, 1,
-0,   96,
+240, 1,   // Switch to bank 1
+0,   96,  // Configure input formatter
 1,   224,
 2,   100,
 3,   255,
@@ -158,9 +159,11 @@ const uint8_t startArray[] PROGMEM = {
 40,  4,
 41,  0,
 42,  0,
-133, 12,
+
+133, 12,   // Mode detect
 134, 202,
-48,  202,
+
+48,  202,  // HD bypass
 49,  0,
 50,  128,
 51,  0,
@@ -198,7 +201,8 @@ const uint8_t startArray[] PROGMEM = {
 83,  0,
 84,  0,
 85,  0,
-96,  208,
+
+96,  208, // Mode detect
 97,  34,
 98,  32,
 99,  39,
@@ -235,8 +239,8 @@ const uint8_t startArray[] PROGMEM = {
 130, 53,
 131, 0,
 
-240, 2,
-0,   2,
+240, 2,   // Bank 2
+0,   2,   // Configure deinterlacer
 1,   3,
 2,   204,
 3,   0,
@@ -294,8 +298,8 @@ const uint8_t startArray[] PROGMEM = {
 59,  4,
 60,  143,
 
-240, 4,
-0,   16,
+240, 4,  // Bank 4
+0,   16, // Configure SDRAM
 1,   48,
 2,   0,
 3,   0,
@@ -314,4 +318,6 @@ const uint8_t startArray[] PROGMEM = {
 16,  0,
 17,  146,
 18,  1,
+
+// And these are left alone: OSD, PIP, Video Processor, Capture/Playback & FIFOs
 };
