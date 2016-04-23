@@ -34,6 +34,18 @@ PB3 > P5.SDA
 Leave P5.VCC unconnected. The Launchpad board needs to be powered separately
 (with 5v) on its USB port.
 
+How to build
+------------
+
+I used a standard GCC for ARM. You will need to install or compile one (usually,
+Mentor Graphics toolchain is used for people who don't manage to compile gcc
+themselves, but any version should do).
+
+Once you have the compiler installed, just run 'make'.
+
+Once you get the binaries, you can flash the Stellaris board using lm4tools.
+This needs the board to be connected using the appropriate USB port.
+
 How to use it
 -------------
 
@@ -48,6 +60,10 @@ A serial terminal is available on the Launchpad debug USB port. It allows you
 to peek and poke the video controller registers for adjustments and experimentation.
 Later, more high-level commands will be added.
 
+You can also reflash the Stellaris or press the reset button at any time. It
+will reprogram the scandoubler again, which is useful if something goes wrong
+or if you want to quickly test changes to the code.
+
 Compatibility
 -------------
 
@@ -59,6 +75,7 @@ This was confirmed working with the following input sources:
 And the following display hardware:
 - No name "TFT color monitor" with VGA input, MST703 based.
 - ACER video projector at Forever partyplace.
+- "Linetech" brand TFT TV, manufactured by Vestel.
 
 Known problems
 --------------
