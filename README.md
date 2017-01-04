@@ -27,9 +27,9 @@ populated.
 
 The wiring is as follows:
 
-PB2 > P5.SCL
-GND > P5.GND
-PB3 > P5.SDA
+* PB2 > P5.SCL
+* GND > P5.GND
+* PB3 > P5.SDA
 
 Leave P5.VCC unconnected. The Launchpad board needs to be powered separately
 (with 5v) on its USB port.
@@ -99,8 +99,11 @@ Credits
 -------
 
 Code for this implementation by PulkoMandy/SHR.
+
 Original idea and experiments with Raspberry Pi by dooklink (https://github.com/dooklink/gbs-control)
+
 Digispark Pro C code and register value list converter tool by mybook4 (http://shmups.system11.org/viewtopic.php?f=6&t=52172)
+
 
 Appendices
 ==========
