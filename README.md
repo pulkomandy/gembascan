@@ -99,8 +99,8 @@ Credits
 -------
 
 Code for this implementation by PulkoMandy/SHR.
-Original idea and experiments with Raspberry Pi by dooklink.
-Digispark Pro C code and register value list converter tool by mybook4.
+Original idea and experiments with Raspberry Pi by dooklink (https://github.com/dooklink/gbs-control)
+Digispark Pro C code and register value list converter tool by mybook4 (http://shmups.system11.org/viewtopic.php?f=6&t=52172)
 
 Appendices
 ==========
@@ -119,3 +119,9 @@ The 48k ULA is exactly identical to Amstrad CPC/Thomson timings and should not
 be a problem. However, for some reason the timings for the other variants are
 a bit off, and this seems to confuse the GBS converter (but also a lot of other
 devices).
+
+Datasheets
+----------
+
+A set of datasheets was assembled by dooklink. It contains details on most of the chips used on the GBS8200.
+http://shmups.system11.org/viewtopic.php?f=6&t=52172
