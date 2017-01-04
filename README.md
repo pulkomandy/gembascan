@@ -114,14 +114,14 @@ SPECTRUM TIMINGS
 Thanks to mike/zeroteam, the secrets of ZX spectrum video timings have been
 revealed:
 
-ULA 48k: 312 lines, 64us/line, 19968us/frame, 50.080128Hz (Spectrum 48K)
-ULA 1  : 314 lines, 64us/line, 20096us/frame, 49.761144Hz (Didaktik)
-ULA-128: 311 lines, 64.281485us/line, 199991.5us/frame, 50.021153Hz (128k/+2/+3)
+* ULA 48k: 312 lines, 64us/line, 19968us/frame, 50.080128Hz (Spectrum 48K)
+* ULA 1  : 314 lines, 64us/line, 20096us/frame, 49.761144Hz (Didaktik)
+* ULA-128: 311 lines, 64.281485us/line, 199991.5us/frame, 50.021153Hz (128k/+2/+3)
 
 The 48k ULA is exactly identical to Amstrad CPC/Thomson timings and should not
 be a problem. However, for some reason the timings for the other variants are
 a bit off, and this seems to confuse the GBS converter (but also a lot of other
-devices).
+devices). Symptom: the first frame (boot screen) will be displayed fine, but then the screen never gets updated.
 
 Datasheets
 ----------
